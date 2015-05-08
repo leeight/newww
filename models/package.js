@@ -112,6 +112,8 @@ Package.prototype.count = function() {
 };
 
 Package.prototype.star = function (package) {
+  package = package.replace('/', '%2f');
+
   var _this = this;
   var url = fmt("%s/package/%s/star", _this.host, package);
   var opts = {
@@ -140,6 +142,8 @@ Package.prototype.star = function (package) {
 };
 
 Package.prototype.unstar = function (package) {
+  package = package.replace('/', '%2f');
+
   var _this = this;
   var url = fmt("%s/package/%s/star", _this.host, package);
   var opts = {
