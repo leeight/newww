@@ -15,6 +15,7 @@ var util = require('util');
 
 var Q = require('q');
 var request = require('request');
+var moment = require('moment');
 
 var config = require('../config');
 
@@ -30,7 +31,7 @@ var kTransformKey = {
   modified: function (k, v) {
     return {
       name: k[1],
-      description: k[2] + ' - ' + k[0],
+      description: k[2] + ' - ' + moment(new Date(k[0])).format('YYYY-MM-DD'),
       url: 'xx',
       value: k[0]
     };

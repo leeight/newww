@@ -12,7 +12,8 @@
  */
 
 // exports.registryCouch = 'http://10.58.97.53:8984/registry/_design/scratch/_rewrite';
-exports.registryCouch = 'http://edp-registry.baidu.com';
+// exports.registryCouch = 'http://edp-registry.baidu.com';
+exports.registryCouch = 'http://127.0.0.1:8984';
 
 
 
