@@ -85,9 +85,9 @@ module.exports = function (package) {
 
   // Create `npm install foo` command
   // Shorten to `npm i` for long package names
-  var installWord = (package.name.length > 15) ? "i" : "install"
+  var installWord = (package.name.length > 15) ? "import" : "import"
   var globalFlag = package.preferGlobal ? "-g" : ""
-  package.installCommand = fmt("npm %s %s %s", installWord, globalFlag, package.name)
+  package.installCommand = fmt("edp %s %s %s", installWord, globalFlag, package.name)
     .replace(/\s+/g, " ")
     .trim()
 
