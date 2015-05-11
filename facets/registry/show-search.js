@@ -18,6 +18,7 @@ module.exports = function (request, reply) {
   var page = Math.abs(parseInt(request.query.page, 10)) || 1;
   var searchQuery = {
     fields : ['name', 'keywords','description','author','version', 'stars', 'dlScore', 'dlDay', 'dlWeek'],
+    keyword: request.query.q,
     body: {
       from: (page - 1) * perPage,
       size : perPage,

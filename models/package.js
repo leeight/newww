@@ -39,7 +39,8 @@ Package.prototype.get = function(name) {
 
   return cache.getP(opts)
   .then(function(_package) {
-    return decorate(_package);
+    var package = decorate(_package);
+    return package;
   });
 
 };
@@ -87,8 +88,8 @@ Package.prototype.update = function(name, body) {
 
 Package.prototype.list = function(options, ttl) {
   var url = URL.format({
-    protocol: "https",
-    host: URL.parse(this.host).hostname,
+    protocol: "http",
+    host: URL.parse(this.host).host,
     pathname: "/package",
     query: options,
   });

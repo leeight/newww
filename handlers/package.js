@@ -21,14 +21,14 @@ package.show = function(request, reply) {
   var actions = {
     package: Package.get(name),
     dependents: Package.list({dependency: name, limit: 50}, DEPENDENCY_TTL),
-    downloads: Download.getAll(name),
+    // downloads: Download.getAll(name),
   };
 
   P.props(actions)
     .then(function (results) {
       var pkg = results.package;
       pkg.dependents = results.dependents;
-      pkg.downloads = results.downloads;
+      // pkg.downloads = results.downloads;
 
       if (pkg && pkg.time && pkg.time.unpublished) {
         request.logger.info('package is unpublished: ' + name);

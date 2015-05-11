@@ -10,7 +10,7 @@ module.exports = function (request, reply) {
     request: request, cache: require("../lib/cache")
   });
   var context = {
-    explicit: require("npm-explicit-installs")
+    // explicit: require("npm-explicit-installs")
   };
 
   var actions = {

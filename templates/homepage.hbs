@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="centered">
-    <h1>npm is the package manager for <span id="what-npm-is-for">node</span></h1>
+    <h1>edp is the package manager for <span id="what-npm-is-for">esui</span></h1>
   </div>
 
   <div id="home-stats">
@@ -14,21 +14,21 @@
 
     {{#if downloads.day}}
       <div class="stat icon-cal-24hours">
-        <strong class="pretty-number">{{downloads.day.downloads}}</strong>
+        <strong class="pretty-number">0</strong>
         downloads in the last day
       </div>
     {{/if}}
 
     {{#if downloads.week}}
       <div class="stat icon-cal-7days">
-        <strong class="pretty-number">{{downloads.week.downloads}}</strong>
+        <strong class="pretty-number">0</strong>
         downloads in the last week
       </div>
     {{/if}}
 
     {{#if downloads.month}}
       <div class="stat icon-cal-30days">
-        <strong class="pretty-number">{{downloads.month.downloads}}</strong>
+        <strong class="pretty-number">0</strong>
         downloads in the last month
       </div>
     {{/if}}
@@ -36,6 +36,7 @@
 
 </div>
 
+{{#if explicit}}
 <h2 id="explicit" class="centered ruled">
   <a href="#explicit">packages people 'npm install' a lot</a>
 </h2>
@@ -44,6 +45,7 @@
     <li>{{> package-widget}}</li>
   {{/each}}
 </ul>
+{{/if}}
 
 <h2 id="recent" class="centered ruled">
   <a href="/browse/updated">recently updated packages</a>

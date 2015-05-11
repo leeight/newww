@@ -9,7 +9,7 @@ var _         = require('lodash'),
 
 var log = bole('server');
 bole.output({
-  level: 'info',
+  level: 'debug',
   stream: process.stdout
 });
 
@@ -17,6 +17,7 @@ var redisConfig = require("redis-url")
   .parse(process.env.REDIS_URL)
 
 var server = new Hapi.Server({
+  // debug: { request: ['error'] },
   cache: {
     engine: require('catbox-redis'),
     host: redisConfig.hostname,
