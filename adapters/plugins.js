@@ -1,13 +1,13 @@
 module.exports = [
   {
     register: require('crumb'),
-    options: {cookieOptions: { isSecure: true }}
+    options: {cookieOptions: { isSecure: false }}
   },
   require('scooter'),
-  {
-    register: require('blankie'),
-    options: require('../lib/csp').default
-  },
+  // {
+  //   register: require('blankie'),
+  //   options: require('../lib/csp').default
+  // },
   require('../services/user'),
   require('../services/corporate'),
   require('../services/email'),

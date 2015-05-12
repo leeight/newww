@@ -49,20 +49,48 @@ var kTransformKey = {
 var kDefaultSortKey = 'modified';
 var kDefaultLimit = 10;
 
+exports.lastPublishDate = function (name) {
+  var deferred = Q.defer();
+
+  var startkey = encodeURIComponent(JSON.stringify(name));
+  var endkey = startkey;
+  var url = util.format('%s/-/_view/publish_date?startkey=%s&endkey=%s',
+      config.registryCouch, startkey, endkey);
+
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      deferred.resolve(JSON.parse(body).rows[0].value);
+    }
+    else {
+      deferred.resolve(null);
+    }
+  });
+
+  return deferred.promise;
+};
+
 exports.byName = function (name) {
   var deferred = Q.defer();
 
   var url = util.format('%s/%s/latest', config.registryCouch, name);
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      deferred.resolve(JSON.parse(body));
+      var package = JSON.parse(body);
+      // 发布者
+      package.publisher = package._npmUser;
+      package.collaborators = package.maintainers;
+      deferred.resolve(package);
     }
     else {
       deferred.reject(error);
     }
   });
 
-  return deferred.promise;
+  return Q.all([exports.lastPublishDate(name), deferred.promise]).then(function (results) {
+    var package = results[1];
+    package.lastPublishedAt = results[0];
+    return package;
+  });
 };
 
 exports.totalCount = function () {
