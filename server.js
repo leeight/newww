@@ -36,6 +36,11 @@ var server = new Hapi.Server({
         },
         xframe: true
       }
+    },
+    state: {
+      clearInvalid: true,
+      // 如果不关闭 strictHeader 一般 Cookie Name 不合法，整个页面就报错了
+      strictHeader: false
     }
   }
 });
@@ -92,6 +97,7 @@ server.register(require('hapi-auth-cookie'), function (err) {
     password: process.env.SESSION_PASSWORD,
     appendNext: 'done',
     redirectTo: '/login',
+    isSecure: false,
     cookie: process.env.SESSION_COOKIE,
     clearInvalid: true,
     validateFunc: function (session, cb) {
