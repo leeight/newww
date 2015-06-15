@@ -47,6 +47,17 @@
 </ul>
 {{/if}}
 
+<h2 id="install">
+  开发机如何安装
+</h2>
+<div class="markdown">
+<pre><code>npm i -g edp edp-build@beta edp-webserver</code></pre>
+如果没有外网访问权限，请使用公司内部的<code>npm registry</code>
+<pre><code>npm i -g edp edp-build@beta edp-webserver --registry=http://npm.internal.baidu.com</code></pre>
+如果公司内部的<code>npm registry</code>版本太老，可以考虑使用<code>taobao npm registry</code>或者联系 liyubei@baidu.com 去同步一下。
+<pre><code>npm i -g edp edp-build@beta edp-webserver --registry=http://registry.npm.taobao.org</code></pre>
+</div>
+
 <h2 id="recent" class="centered ruled">
   <a href="/browse/updated">recently updated packages</a>
 </h2>
